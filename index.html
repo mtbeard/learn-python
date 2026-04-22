@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Référence Complète</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar-logo"><span class="logo-icon">🐍</span> Python Référence</div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" placeholder="Rechercher : list, for, class, async, décorateur…" autocomplete="off" />
+      <span id="search-count"></span>
+    </div>
+    <span class="topbar-version">Python 3.12+</span>
+  </header>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-section-title">Fondamentaux</div>
+    <nav>
+      <a href="#bases"><span class="nav-emoji">🧱</span> Bases &amp; Variables</a>
+      <a href="#types"><span class="nav-emoji">🔢</span> Types de données</a>
+      <a href="#operateurs"><span class="nav-emoji">➕</span> Opérateurs</a>
+      <a href="#conditions"><span class="nav-emoji">🔀</span> Conditions</a>
+      <a href="#boucles"><span class="nav-emoji">🔁</span> Boucles</a>
+      <a href="#fonctions"><span class="nav-emoji">🛠️</span> Fonctions</a>
+    </nav>
+    <div class="sidebar-section-title">Structures de données</div>
+    <nav>
+      <a href="#listes"><span class="nav-emoji">📋</span> Listes</a>
+      <a href="#tuples"><span class="nav-emoji">🔒</span> Tuples</a>
+      <a href="#sets"><span class="nav-emoji">🔵</span> Sets</a>
+      <a href="#dicts"><span class="nav-emoji">📖</span> Dictionnaires</a>
+      <a href="#strings"><span class="nav-emoji">💬</span> Chaînes</a>
+      <a href="#comprehensions"><span class="nav-emoji">⚡</span> Compréhensions</a>
+    </nav>
+    <div class="sidebar-section-title">Intermédiaire</div>
+    <nav>
+      <a href="#poo"><span class="nav-emoji">🏗️</span> POO &amp; Classes</a>
+      <a href="#exceptions"><span class="nav-emoji">🚨</span> Exceptions</a>
+      <a href="#fichiers"><span class="nav-emoji">📁</span> Fichiers &amp; I/O</a>
+      <a href="#modules"><span class="nav-emoji">📦</span> Modules</a>
+      <a href="#fonctionnel"><span class="nav-emoji">λ</span> Prog. Fonctionnelle</a>
+    </nav>
+    <div class="sidebar-section-title">Avancé</div>
+    <nav>
+      <a href="#generateurs"><span class="nav-emoji">🌀</span> Générateurs</a>
+      <a href="#decorateurs"><span class="nav-emoji">🎨</span> Décorateurs</a>
+      <a href="#context"><span class="nav-emoji">📌</span> Context Managers</a>
+      <a href="#async"><span class="nav-emoji">⚡</span> Async / Await</a>
+      <a href="#metaclasses"><span class="nav-emoji">🔮</span> Métaclasses</a>
+      <a href="#typing"><span class="nav-emoji">🏷️</span> Typage statique</a>
+    </nav>
+    <div class="sidebar-section-title">Modules populaires</div>
+    <nav>
+      <a href="#stdlib"><span class="nav-emoji">🗂️</span> os / sys / pathlib</a>
+      <a href="#json-re"><span class="nav-emoji">📄</span> json / re</a>
+      <a href="#datetime"><span class="nav-emoji">📅</span> datetime</a>
+      <a href="#collections"><span class="nav-emoji">🗃️</span> collections</a>
+      <a href="#itertools"><span class="nav-emoji">🔗</span> itertools</a>
+      <a href="#builtins"><span class="nav-emoji">⚙️</span> Fonctions intégrées</a>
+    </nav>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main" id="main-content">
+    <div class="page-hero">
+      <h1>🐍 Python — Référence Complète</h1>
+      <p>Accès rapide à toute la syntaxe Python. Utilisez la barre de recherche pour filtrer par mot-clé.</p>
+    </div>
+
+    <div id="no-results">
+      <div class="no-results-icon">🔍</div>
+      <h3>Aucun résultat</h3>
+      <p>Essayez un autre mot-clé.</p>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         BASES & VARIABLES
+    ════════════════════════════════════════ -->
+    <section class="section" id="bases" data-keywords="variable affectation type int float bool str none print input commentaire indentation syntaxe bases">
+      <div class="section-header">
+        <span class="section-emoji">🧱</span>
+        <h2>Bases &amp; Variables</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Variables &amp; Affectation</div>
+          <div class="card-desc">Pas de déclaration de type explicite.</div>
+          <pre><code><span class="cm"># Affectation simple</span>
+x = 10
+nom = <span class="st">"Alice"</span>
+pi = 3.14159
+actif = <span class="kw">True</span>
+vide = <span class="kw">None</span>
+
+<span class="cm"># Affectation multiple</span>
+a, b, c = 1, 2, 3
+x = y = z = 0
+
+<span class="cm"># Échange de valeurs</span>
+a, b = b, a
+
+<span class="cm"># Augmentée</span>
+x += 5   <span class="cm"># x = x + 5</span>
+x -= 2
+x *= 3
+x //= 4  <span class="cm"># division entière</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">print() &amp; input()</div>
+          <div class="card-desc">Entrées/sorties de base.</div>
+          <pre><code><span class="cm"># print</span>
+<span class="fn">print</span>(<span class="st">"Bonjour"</span>)
+<span class="fn">print</span>(<span class="st">"a ="</span>, a, <span class="st">"b ="</span>, b)
+<span class="fn">print</span>(<span class="st">"fin"</span>, end=<span class="st">""</span>)       <span class="cm"># sans saut de ligne</span>
+<span class="fn">print</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, sep=<span class="st">"-"</span>)   <span class="cm"># séparateur</span>
+
+<span class="cm"># f-strings (Python 3.6+)</span>
+age = 25
+<span class="fn">print</span>(<span class="st">f"J'ai {age} ans"</span>)
+<span class="fn">print</span>(<span class="st">f"{pi:.2f}"</span>)        <span class="cm"># 2 décimales</span>
+<span class="fn">print</span>(<span class="st">f"{x:>10}"</span>)         <span class="cm"># aligné à droite</span>
+
+<span class="cm"># input</span>
+nom = <span class="fn">input</span>(<span class="st">"Votre nom : "</span>)
+age = <span class="fn">int</span>(<span class="fn">input</span>(<span class="st">"Votre âge : "</span>))</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Commentaires &amp; Docstrings</div>
+          <pre><code><span class="cm"># Commentaire sur une ligne</span>
+
+<span class="st">"""
+Docstring sur
+plusieurs lignes
+"""</span>
+
+<span class="kw">def</span> <span class="fn">ma_fonction</span>():
+    <span class="st">"""Description de la fonction."""</span>
+    <span class="kw">pass</span>
+
+<span class="cm"># Accéder à la docstring</span>
+<span class="fn">print</span>(ma_fonction.__doc__)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Portée des variables (LEGB)</div>
+          <div class="card-desc">Local → Enclosing → Global → Built-in</div>
+          <pre><code>x = <span class="st">"global"</span>
+
+<span class="kw">def</span> <span class="fn">externe</span>():
+    x = <span class="st">"enclosing"</span>
+    <span class="kw">def</span> <span class="fn">interne</span>():
+        <span class="kw">nonlocal</span> x
+        x = <span class="st">"local modifié"</span>
+    interne()
+    <span class="fn">print</span>(x)  <span class="cm"># "local modifié"</span>
+
+<span class="kw">def</span> <span class="fn">modifier_global</span>():
+    <span class="kw">global</span> x
+    x = <span class="st">"modifié"</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         TYPES DE DONNÉES
+    ════════════════════════════════════════ -->
+    <section class="section" id="types" data-keywords="int float complex bool str bytes list tuple set dict type isinstance conversion cast">
+      <div class="section-header">
+        <span class="section-emoji">🔢</span>
+        <h2>Types de données</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="table-card">
+        <div class="card-title">Tableau des types</div>
+        <table class="ref-table">
+          <tr><th>Type</th><th>Exemple</th><th>Description</th></tr>
+          <tr><td><code>int</code></td><td><code>42, -7, 0b1010, 0xFF</code></td><td>Entier (taille illimitée)</td></tr>
+          <tr><td><code>float</code></td><td><code>3.14, 1e-5, float('inf')</code></td><td>Flottant 64 bits</td></tr>
+          <tr><td><code>complex</code></td><td><code>3+2j</code></td><td>Nombre complexe</td></tr>
+          <tr><td><code>bool</code></td><td><code>True, False</code></td><td>Sous-classe de int</td></tr>
+          <tr><td><code>str</code></td><td><code>"texte", 'texte'</code></td><td>Chaîne immuable</td></tr>
+          <tr><td><code>bytes</code></td><td><code>b"data"</code></td><td>Séquence d'octets</td></tr>
+          <tr><td><code>list</code></td><td><code>[1, 2, 3]</code></td><td>Liste muable ordonnée</td></tr>
+          <tr><td><code>tuple</code></td><td><code>(1, 2, 3)</code></td><td>Tuple immuable</td></tr>
+          <tr><td><code>set</code></td><td><code>{1, 2, 3}</code></td><td>Ensemble sans doublons</td></tr>
+          <tr><td><code>dict</code></td><td><code>{"a": 1}</code></td><td>Dictionnaire clé→valeur</td></tr>
+          <tr><td><code>NoneType</code></td><td><code>None</code></td><td>Absence de valeur</td></tr>
+        </table>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Conversions de types</div>
+          <pre><code><span class="fn">int</span>(<span class="st">"42"</span>)       <span class="cm"># 42</span>
+<span class="fn">int</span>(3.9)        <span class="cm"># 3  (troncature)</span>
+<span class="fn">float</span>(<span class="st">"3.14"</span>)  <span class="cm"># 3.14</span>
+<span class="fn">str</span>(100)        <span class="cm"># "100"</span>
+<span class="fn">bool</span>(0)         <span class="cm"># False</span>
+<span class="fn">bool</span>(<span class="st">""</span>)        <span class="cm"># False</span>
+<span class="fn">bool</span>([])        <span class="cm"># False</span>
+<span class="fn">list</span>((1,2,3))  <span class="cm"># [1, 2, 3]</span>
+<span class="fn">tuple</span>([1,2])   <span class="cm"># (1, 2)</span>
+<span class="fn">set</span>([1,1,2])   <span class="cm"># {1, 2}</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Vérification de type</div>
+          <pre><code><span class="fn">type</span>(42)          <span class="cm"># &lt;class 'int'&gt;</span>
+<span class="fn">type</span>(x) == <span class="fn">int</span>    <span class="cm"># True</span>
+
+<span class="fn">isinstance</span>(x, <span class="fn">int</span>)          <span class="cm"># True</span>
+<span class="fn">isinstance</span>(x, (int, float)) <span class="cm"># True si l'un ou l'autre</span>
+
+<span class="cm"># Valeurs "falsy" (fausses)</span>
+<span class="cm"># None, False, 0, 0.0, "", [], {}, set()</span>
+
+<span class="cm"># Valeurs "truthy" (vraies)</span>
+<span class="cm"># Tout le reste</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         OPÉRATEURS
+    ════════════════════════════════════════ -->
+    <section class="section" id="operateurs" data-keywords="opérateur arithmétique comparaison logique bitwise walrus modulo puissance division entière and or not in is">
+      <div class="section-header">
+        <span class="section-emoji">➕</span>
+        <h2>Opérateurs</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="two-col">
+        <div class="table-card">
+          <div class="card-title">Arithmétiques</div>
+          <table class="ref-table">
+            <tr><th>Op.</th><th>Description</th><th>Exemple</th></tr>
+            <tr><td><code>+</code></td><td>Addition</td><td><code>3+2 → 5</code></td></tr>
+            <tr><td><code>-</code></td><td>Soustraction</td><td><code>5-3 → 2</code></td></tr>
+            <tr><td><code>*</code></td><td>Multiplication</td><td><code>3*4 → 12</code></td></tr>
+            <tr><td><code>/</code></td><td>Division réelle</td><td><code>7/2 → 3.5</code></td></tr>
+            <tr><td><code>//</code></td><td>Division entière</td><td><code>7//2 → 3</code></td></tr>
+            <tr><td><code>%</code></td><td>Modulo</td><td><code>7%2 → 1</code></td></tr>
+            <tr><td><code>**</code></td><td>Puissance</td><td><code>2**8 → 256</code></td></tr>
+          </table>
+        </div>
+        <div class="table-card">
+          <div class="card-title">Comparaison &amp; Logiques</div>
+          <table class="ref-table">
+            <tr><th>Op.</th><th>Description</th></tr>
+            <tr><td><code>==  !=</code></td><td>Égal / Différent</td></tr>
+            <tr><td><code>&lt;  &gt;  &lt;=  &gt;=</code></td><td>Comparaisons</td></tr>
+            <tr><td><code>and</code></td><td>ET logique</td></tr>
+            <tr><td><code>or</code></td><td>OU logique</td></tr>
+            <tr><td><code>not</code></td><td>NON logique</td></tr>
+            <tr><td><code>in</code></td><td>Appartenance</td></tr>
+            <tr><td><code>is</code></td><td>Identité objet</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Opérateurs bit à bit</div>
+          <pre><code>a & b   <span class="cm"># AND bit à bit</span>
+a | b   <span class="cm"># OR bit à bit</span>
+a ^ b   <span class="cm"># XOR bit à bit</span>
+~a      <span class="cm"># NOT bit à bit</span>
+a &lt;&lt; n  <span class="cm"># Décalage gauche</span>
+a &gt;&gt; n  <span class="cm"># Décalage droite</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Walrus operator := (3.8+)</div>
+          <pre><code><span class="cm"># Affecte ET évalue en même temps</span>
+<span class="kw">while</span> chunk := f.read(<span class="nb">1024</span>):
+    process(chunk)
+
+<span class="kw">if</span> n := <span class="fn">len</span>(data):
+    <span class="fn">print</span>(<span class="st">f"{n} éléments"</span>)
+
+<span class="cm"># Dans une compréhension</span>
+résultats = [y <span class="kw">for</span> x <span class="kw">in</span> données
+             <span class="kw">if</span> (y := f(x)) &gt; 0]</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CONDITIONS
+    ════════════════════════════════════════ -->
+    <section class="section" id="conditions" data-keywords="if elif else match case ternaire conditionnel switch">
+      <div class="section-header">
+        <span class="section-emoji">🔀</span>
+        <h2>Conditions</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">if / elif / else</div>
+          <pre><code>age = 20
+
+<span class="kw">if</span> age &lt; 13:
+    <span class="fn">print</span>(<span class="st">"enfant"</span>)
+<span class="kw">elif</span> age &lt; 18:
+    <span class="fn">print</span>(<span class="st">"ado"</span>)
+<span class="kw">elif</span> age &lt; 65:
+    <span class="fn">print</span>(<span class="st">"adulte"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"senior"</span>)
+
+<span class="cm"># Expression ternaire</span>
+label = <span class="st">"pair"</span> <span class="kw">if</span> x % 2 == 0 <span class="kw">else</span> <span class="st">"impair"</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">match / case (Python 3.10+)</div>
+          <pre><code><span class="kw">match</span> commande:
+    <span class="kw">case</span> <span class="st">"quitter"</span>:
+        quitter()
+    <span class="kw">case</span> <span class="st">"aide"</span>:
+        afficher_aide()
+    <span class="kw">case</span> _:
+        <span class="fn">print</span>(<span class="st">"inconnu"</span>)
+
+<span class="cm"># Pattern matching sur structure</span>
+<span class="kw">match</span> point:
+    <span class="kw">case</span> (0, 0):
+        <span class="fn">print</span>(<span class="st">"origine"</span>)
+    <span class="kw">case</span> (x, 0):
+        <span class="fn">print</span>(<span class="st">f"axe X : {x}"</span>)
+    <span class="kw">case</span> (x, y):
+        <span class="fn">print</span>(<span class="st">f"point ({x},{y})"</span>)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         BOUCLES
+    ════════════════════════════════════════ -->
+    <section class="section" id="boucles" data-keywords="for while break continue pass range enumerate zip boucle itération">
+      <div class="section-header">
+        <span class="section-emoji">🔁</span>
+        <h2>Boucles</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">for</div>
+          <pre><code><span class="cm"># Sur une séquence</span>
+<span class="kw">for</span> x <span class="kw">in</span> [<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">3</span>]:
+    <span class="fn">print</span>(x)
+
+<span class="cm"># range(stop) / range(start,stop,step)</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">5</span>):       <span class="cm"># 0..4</span>
+    <span class="fn">print</span>(i)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">2</span>, <span class="nb">10</span>, <span class="nb">2</span>): <span class="cm"># 2,4,6,8</span>
+    <span class="fn">print</span>(i)
+
+<span class="cm"># enumerate — indice + valeur</span>
+<span class="kw">for</span> i, val <span class="kw">in</span> <span class="fn">enumerate</span>(liste):
+    <span class="fn">print</span>(i, val)
+
+<span class="cm"># zip — parcourir deux listes</span>
+<span class="kw">for</span> a, b <span class="kw">in</span> <span class="fn">zip</span>(listA, listB):
+    <span class="fn">print</span>(a, b)
+
+<span class="cm"># for … else</span>
+<span class="kw">for</span> x <span class="kw">in</span> liste:
+    <span class="kw">if</span> x == cible: <span class="kw">break</span>
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"non trouvé"</span>)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">while &amp; contrôle de flux</div>
+          <pre><code>n = 0
+<span class="kw">while</span> n &lt; 5:
+    n += 1
+
+<span class="cm"># while True — boucle infinie</span>
+<span class="kw">while</span> <span class="kw">True</span>:
+    rep = <span class="fn">input</span>(<span class="st">">"</span>)
+    <span class="kw">if</span> rep == <span class="st">"q"</span>: <span class="kw">break</span>
+
+<span class="cm"># break  — sort de la boucle</span>
+<span class="cm"># continue — passe à l'itération suivante</span>
+<span class="cm"># pass   — instruction vide (no-op)</span>
+
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">10</span>):
+    <span class="kw">if</span> i % 2 == 0: <span class="kw">continue</span>
+    <span class="kw">if</span> i &gt; 7:      <span class="kw">break</span>
+    <span class="fn">print</span>(i)        <span class="cm"># 1 3 5 7</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         FONCTIONS
+    ════════════════════════════════════════ -->
+    <section class="section" id="fonctions" data-keywords="fonction def return args kwargs lambda *args **kwargs default paramètre argument récursion">
+      <div class="section-header">
+        <span class="section-emoji">🛠️</span>
+        <h2>Fonctions</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Définition &amp; paramètres</div>
+          <pre><code><span class="kw">def</span> <span class="fn">saluer</span>(nom, message=<span class="st">"Bonjour"</span>):
+    <span class="st">"""Salue une personne."""</span>
+    <span class="kw">return</span> <span class="st">f"{message}, {nom}!"</span>
+
+saluer(<span class="st">"Alice"</span>)               <span class="cm"># positionnel</span>
+saluer(nom=<span class="st">"Bob"</span>, message=<span class="st">"Salut"</span>)  <span class="cm"># nommé</span>
+
+<span class="cm"># *args — tuple d'arguments positionnels</span>
+<span class="kw">def</span> <span class="fn">somme</span>(*args):
+    <span class="kw">return</span> <span class="fn">sum</span>(args)
+
+<span class="cm"># **kwargs — dict d'arguments nommés</span>
+<span class="kw">def</span> <span class="fn">afficher</span>(**kwargs):
+    <span class="kw">for</span> k, v <span class="kw">in</span> kwargs.items():
+        <span class="fn">print</span>(<span class="st">f"{k}={v}"</span>)
+
+<span class="cm"># Ordre : normal, /, *args, *, **kwargs</span>
+<span class="kw">def</span> <span class="fn">f</span>(pos_only, /, normal, *, kw_only):
+    <span class="kw">pass</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Lambda &amp; fonctions avancées</div>
+          <pre><code><span class="cm"># Lambda — fonction anonyme</span>
+carré = <span class="kw">lambda</span> x: x ** 2
+addition = <span class="kw">lambda</span> a, b: a + b
+
+<span class="cm"># Retour multiple (tuple)</span>
+<span class="kw">def</span> <span class="fn">min_max</span>(lst):
+    <span class="kw">return</span> <span class="fn">min</span>(lst), <span class="fn">max</span>(lst)
+lo, hi = min_max([3,1,4,1,5])
+
+<span class="cm"># Récursion</span>
+<span class="kw">def</span> <span class="fn">factorielle</span>(n):
+    <span class="kw">if</span> n &lt;= 1: <span class="kw">return</span> 1
+    <span class="kw">return</span> n * factorielle(n-1)
+
+<span class="cm"># Annotations de type (hints)</span>
+<span class="kw">def</span> <span class="fn">addition</span>(a: <span class="fn">int</span>, b: <span class="fn">int</span>) -&gt; <span class="fn">int</span>:
+    <span class="kw">return</span> a + b</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         LISTES
+    ════════════════════════════════════════ -->
+    <section class="section" id="listes" data-keywords="list liste append extend insert remove pop sort reverse index slice slicing">
+      <div class="section-header">
+        <span class="section-emoji">📋</span>
+        <h2>Listes</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Méthodes essentielles</div>
+          <pre><code>lst = [3, 1, 4, 1, 5, 9]
+
+lst.append(2)         <span class="cm"># ajoute en fin</span>
+lst.extend([6, 5])    <span class="cm"># ajoute plusieurs</span>
+lst.insert(0, 99)     <span class="cm"># insère à l'index 0</span>
+lst.remove(1)         <span class="cm"># supprime 1ère occurrence</span>
+lst.pop()             <span class="cm"># retire le dernier</span>
+lst.pop(2)            <span class="cm"># retire l'index 2</span>
+lst.sort()            <span class="cm"># tri en place</span>
+lst.sort(reverse=<span class="kw">True</span>)
+lst.reverse()         <span class="cm"># inverse en place</span>
+lst.count(1)          <span class="cm"># nb d'occurrences</span>
+lst.index(5)          <span class="cm"># 1er index de 5</span>
+lst.clear()           <span class="cm"># vide la liste</span>
+copy = lst.copy()</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Slicing</div>
+          <pre><code>lst = [0, 1, 2, 3, 4, 5]
+
+lst[1]       <span class="cm"># 1</span>
+lst[-1]      <span class="cm"># 5  (dernier)</span>
+lst[1:4]     <span class="cm"># [1, 2, 3]</span>
+lst[:3]      <span class="cm"># [0, 1, 2]</span>
+lst[3:]      <span class="cm"># [3, 4, 5]</span>
+lst[::2]     <span class="cm"># [0, 2, 4]  (pas=2)</span>
+lst[::-1]    <span class="cm"># [5,4,3,2,1,0]  (inversé)</span>
+lst[1:5:2]   <span class="cm"># [1, 3]</span>
+
+<span class="cm"># Assigner sur un slice</span>
+lst[1:3] = [10, 20]
+del lst[2:4]</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Fonctions utiles sur listes</div>
+          <pre><code><span class="fn">len</span>(lst)           <span class="cm"># longueur</span>
+<span class="fn">sum</span>(lst)           <span class="cm"># somme</span>
+<span class="fn">min</span>(lst)           <span class="cm"># minimum</span>
+<span class="fn">max</span>(lst)           <span class="cm"># maximum</span>
+<span class="fn">sorted</span>(lst)        <span class="cm"># nouvelle liste triée</span>
+<span class="fn">sorted</span>(lst, key=<span class="kw">lambda</span> x: -x)
+<span class="fn">reversed</span>(lst)      <span class="cm"># itérateur inversé</span>
+<span class="fn">list</span>(<span class="fn">reversed</span>(lst))
+<span class="fn">any</span>(x &gt; 3 <span class="kw">for</span> x <span class="kw">in</span> lst)
+<span class="fn">all</span>(x &gt; 0 <span class="kw">for</span> x <span class="kw">in</span> lst)
+<span class="fn">enumerate</span>(lst)     <span class="cm"># (index, valeur)</span>
+<span class="fn">zip</span>(l1, l2)        <span class="cm"># paires</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         TUPLES
+    ════════════════════════════════════════ -->
+    <section class="section" id="tuples" data-keywords="tuple immuable unpacking namedtuple déballage">
+      <div class="section-header">
+        <span class="section-emoji">🔒</span>
+        <h2>Tuples</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Création &amp; déballage</div>
+          <pre><code>t = (1, 2, 3)
+t = 1, 2, 3        <span class="cm"># parenth. optionnelles</span>
+t = (42,)          <span class="cm"># tuple d'un élément</span>
+
+<span class="cm"># Déballage (unpacking)</span>
+a, b, c = t
+premier, *reste = t         <span class="cm"># [1], [2,3]</span>
+*debut, dernier = t
+
+<span class="cm"># Méthodes disponibles</span>
+t.count(2)   <span class="cm"># nb d'occurrences</span>
+t.index(3)   <span class="cm"># premier index</span>
+
+<span class="cm"># Swap élégant</span>
+a, b = b, a</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">namedtuple</div>
+          <pre><code><span class="kw">from</span> collections <span class="kw">import</span> namedtuple
+
+Point = namedtuple(<span class="st">'Point'</span>, [<span class="st">'x'</span>, <span class="st">'y'</span>])
+p = Point(<span class="nb">3</span>, <span class="nb">4</span>)
+p.x      <span class="cm"># 3</span>
+p.y      <span class="cm"># 4</span>
+p[0]     <span class="cm"># 3  (accès par index aussi)</span>
+
+<span class="cm"># Python 3.7+ : dataclass</span>
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
+
+<span class="dc">@dataclass</span>
+<span class="kw">class</span> <span class="cl">Point</span>:
+    x: <span class="fn">float</span>
+    y: <span class="fn">float</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         SETS
+    ════════════════════════════════════════ -->
+    <section class="section" id="sets" data-keywords="set ensemble union intersection difference discard frozenset">
+      <div class="section-header">
+        <span class="section-emoji">🔵</span>
+        <h2>Sets (Ensembles)</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Opérations sur sets</div>
+          <pre><code>s = {1, 2, 3, 4}
+s.add(5)
+s.remove(3)     <span class="cm"># KeyError si absent</span>
+s.discard(99)   <span class="cm"># pas d'erreur</span>
+s.pop()         <span class="cm"># retire élément aléatoire</span>
+
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+a | b   <span class="cm"># union     → {1,2,3,4}</span>
+a &amp; b   <span class="cm"># intersection → {2,3}</span>
+a - b   <span class="cm"># différence → {1}</span>
+a ^ b   <span class="cm"># symétrique → {1,4}</span>
+
+a.issubset(b)
+a.issuperset(b)
+a.isdisjoint(b)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Cas d'utilisation</div>
+          <pre><code><span class="cm"># Supprimer les doublons</span>
+unique = <span class="fn">list</span>(<span class="fn">set</span>([1,2,2,3,3]))
+
+<span class="cm"># Test d'appartenance rapide O(1)</span>
+mots_clés = {<span class="st">"def"</span>, <span class="st">"class"</span>, <span class="st">"return"</span>}
+<span class="kw">if</span> mot <span class="kw">in</span> mots_clés:
+    <span class="fn">print</span>(<span class="st">"mot réservé"</span>)
+
+<span class="cm"># frozenset — set immuable</span>
+fs = <span class="fn">frozenset</span>([1, 2, 3])</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         DICTIONNAIRES
+    ════════════════════════════════════════ -->
+    <section class="section" id="dicts" data-keywords="dict dictionnaire get keys values items update defaultdict merge setdefault pop del">
+      <div class="section-header">
+        <span class="section-emoji">📖</span>
+        <h2>Dictionnaires</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Méthodes essentielles</div>
+          <pre><code>d = {<span class="st">"nom"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: 30}
+
+d[<span class="st">"age"</span>]           <span class="cm"># 30</span>
+d.get(<span class="st">"absent"</span>, 0) <span class="cm"># 0 si clé manquante</span>
+d[<span class="st">"ville"</span>] = <span class="st">"Paris"</span>
+<span class="kw">del</span> d[<span class="st">"age"</span>]
+
+d.keys()     <span class="cm"># dict_keys([...])</span>
+d.values()   <span class="cm"># dict_values([...])</span>
+d.items()    <span class="cm"># dict_items([(k,v)...])</span>
+
+d.update({<span class="st">"age"</span>: 31, <span class="st">"pays"</span>: <span class="st">"FR"</span>})
+d.setdefault(<span class="st">"score"</span>, 0)
+d.pop(<span class="st">"ville"</span>)
+d.popitem()  <span class="cm"># retire le dernier</span>
+
+<span class="st">"nom"</span> <span class="kw">in</span> d    <span class="cm"># test d'appartenance</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Fusion &amp; dict avancé</div>
+          <pre><code><span class="cm"># Fusion Python 3.9+</span>
+merged = d1 | d2
+d1 |= d2     <span class="cm"># mise à jour en place</span>
+
+<span class="cm"># Compréhension de dict</span>
+carrés = {x: x**2 <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(6)}
+<span class="cm"># {0:0, 1:1, 2:4, 3:9, 4:16, 5:25}</span>
+
+<span class="cm"># Inverser clés/valeurs</span>
+inv = {v: k <span class="kw">for</span> k, v <span class="kw">in</span> d.items()}
+
+<span class="cm"># Trier par valeur</span>
+tri = <span class="fn">dict</span>(<span class="fn">sorted</span>(d.items(),
+           key=<span class="kw">lambda</span> x: x[<span class="nb">1</span>]))
+
+<span class="cm"># defaultdict</span>
+<span class="kw">from</span> collections <span class="kw">import</span> defaultdict
+dd = defaultdict(<span class="fn">list</span>)
+dd[<span class="st">"a"</span>].append(<span class="nb">1</span>)  <span class="cm"># pas de KeyError</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CHAÎNES
+    ════════════════════════════════════════ -->
+    <section class="section" id="strings" data-keywords="string chaîne split join strip replace upper lower format f-string encode decode regex findall">
+      <div class="section-header">
+        <span class="section-emoji">💬</span>
+        <h2>Chaînes de caractères</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Méthodes str</div>
+          <pre><code>s = <span class="st">"  Bonjour Python  "</span>
+
+s.strip()         <span class="cm"># retire espaces</span>
+s.lstrip()        <span class="cm"># seulement gauche</span>
+s.rstrip()        <span class="cm"># seulement droite</span>
+s.upper()         <span class="cm"># MAJ</span>
+s.lower()         <span class="cm"># min</span>
+s.title()         <span class="cm"># 1ère lettre en maj</span>
+s.capitalize()
+s.replace(<span class="st">"o"</span>, <span class="st">"0"</span>)
+s.split()         <span class="cm"># ['Bonjour','Python']</span>
+s.split(<span class="st">","</span>)      <span class="cm"># séparateur custom</span>
+<span class="st">","</span>.join([<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>])  <span class="cm"># "a,b,c"</span>
+s.startswith(<span class="st">"Bon"</span>)
+s.endswith(<span class="st">"on"</span>)
+s.find(<span class="st">"Python"</span>)   <span class="cm"># index ou -1</span>
+s.count(<span class="st">"o"</span>)
+s.isdigit()
+s.isalpha()
+s.isalnum()</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Formatage</div>
+          <pre><code><span class="cm"># f-strings (recommandé)</span>
+nom, age = <span class="st">"Alice"</span>, 30
+<span class="st">f"Bonjour {nom}, {age} ans"</span>
+<span class="st">f"{3.14159:.2f}"</span>       <span class="cm"># "3.14"</span>
+<span class="st">f"{1000000:,}"</span>         <span class="cm"># "1,000,000"</span>
+<span class="st">f"{42:08b}"</span>            <span class="cm"># "00101010" binaire</span>
+<span class="st">f"{'centré':^20}"</span>      <span class="cm"># centrage</span>
+<span class="st">f"{valeur!r}"</span>          <span class="cm"># repr()</span>
+
+<span class="cm"># .format()</span>
+<span class="st">"{} a {} ans"</span>.format(nom, age)
+<span class="st">"{0} et {1}"</span>.format(a, b)
+
+<span class="cm"># % (ancien)</span>
+<span class="st">"Bonjour %s"</span> % nom</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Chaînes multilignes &amp; spéciales</div>
+          <pre><code><span class="cm"># Multilignes</span>
+texte = <span class="st">"""Ligne 1
+Ligne 2
+Ligne 3"""</span>
+
+<span class="cm"># Raw string (pas d'échappement)</span>
+chemin = <span class="st">r"C:\Users\Alice"</span>
+
+<span class="cm"># Caractères spéciaux</span>
+<span class="st">"\n"</span>  <span class="cm"># saut de ligne</span>
+<span class="st">"\t"</span>  <span class="cm"># tabulation</span>
+<span class="st">"\\"</span>  <span class="cm"># backslash</span>
+<span class="st">"\""</span>  <span class="cm"># guillemet</span>
+
+<span class="cm"># Encodage</span>
+s.encode(<span class="st">"utf-8"</span>)      <span class="cm"># str → bytes</span>
+b.decode(<span class="st">"utf-8"</span>)      <span class="cm"># bytes → str</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         COMPRÉHENSIONS
+    ════════════════════════════════════════ -->
+    <section class="section" id="comprehensions" data-keywords="compréhension list comprehension dict set generator expression filtre">
+      <div class="section-header">
+        <span class="section-emoji">⚡</span>
+        <h2>Compréhensions</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Liste, Dict, Set</div>
+          <pre><code><span class="cm"># Compréhension de liste</span>
+carrés = [x**2 <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">10</span>)]
+pairs = [x <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">20</span>) <span class="kw">if</span> x%2==0]
+flat = [n <span class="kw">for</span> row <span class="kw">in</span> matrix <span class="kw">for</span> n <span class="kw">in</span> row]
+
+<span class="cm"># Compréhension de dict</span>
+d = {k: v**2 <span class="kw">for</span> k, v <span class="kw">in</span> items.items()}
+
+<span class="cm"># Compréhension de set</span>
+voyelles = {c <span class="kw">for</span> c <span class="kw">in</span> texte <span class="kw">if</span> c <span class="kw">in</span> <span class="st">"aeiou"</span>}
+
+<span class="cm"># Expression génératrice (paresseuse)</span>
+total = <span class="fn">sum</span>(x**2 <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">1000</span>))</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Conditionnel dans compréhension</div>
+          <pre><code><span class="cm"># if en filtre (à la fin)</span>
+positifs = [x <span class="kw">for</span> x <span class="kw">in</span> lst <span class="kw">if</span> x &gt; 0]
+
+<span class="cm"># if/else dans l'expression (au début)</span>
+labels = [<span class="st">"pair"</span> <span class="kw">if</span> x%2==0 <span class="kw">else</span> <span class="st">"impair"</span>
+          <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">10</span>)]
+
+<span class="cm"># Imbriqué (matrice)</span>
+mat = [[i*j <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">3</span>)]
+       <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">3</span>)]</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         POO
+    ════════════════════════════════════════ -->
+    <section class="section" id="poo" data-keywords="classe class héritage heritage __init__ __str__ __repr__ self super méthode propriété property staticmethod classmethod dunder magic abstract">
+      <div class="section-header">
+        <span class="section-emoji">🏗️</span>
+        <h2>POO &amp; Classes</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Définition de classe</div>
+          <pre><code><span class="kw">class</span> <span class="cl">Animal</span>:
+    espèce = <span class="st">"Mammifère"</span>  <span class="cm"># attribut de classe</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, nom, age):
+        self.nom = nom       <span class="cm"># attribut d'instance</span>
+        self.age = age
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):
+        <span class="kw">return</span> <span class="st">f"{self.nom} ({self.age} ans)"</span>
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(self):
+        <span class="kw">return</span> <span class="st">f"Animal({self.nom!r}, {self.age})"</span>
+
+    <span class="kw">def</span> <span class="fn">parler</span>(self):
+        <span class="kw">return</span> <span class="st">"..."</span>
+
+a = Animal(<span class="st">"Rex"</span>, 5)
+<span class="fn">print</span>(a)  <span class="cm"># Rex (5 ans)</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Héritage &amp; super()</div>
+          <pre><code><span class="kw">class</span> <span class="cl">Chien</span>(Animal):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, nom, age, race):
+        <span class="fn">super</span>().__init__(nom, age)
+        self.race = race
+
+    <span class="kw">def</span> <span class="fn">parler</span>(self):   <span class="cm"># surcharge</span>
+        <span class="kw">return</span> <span class="st">"Woof!"</span>
+
+<span class="cm"># Héritage multiple</span>
+<span class="kw">class</span> <span class="cl">C</span>(A, B): <span class="kw">pass</span>
+
+<span class="cm"># Vérifications</span>
+<span class="fn">isinstance</span>(rex, Chien)   <span class="cm"># True</span>
+<span class="fn">isinstance</span>(rex, Animal)  <span class="cm"># True</span>
+<span class="fn">issubclass</span>(Chien, Animal)<span class="cm"># True</span>
+Chien.__mro__  <span class="cm"># ordre de résolution</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Méthodes spéciales (dunder)</div>
+          <pre><code><span class="kw">class</span> <span class="cl">Vecteur</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, x, y):
+        self.x, self.y = x, y
+    <span class="kw">def</span> <span class="fn">__add__</span>(self, other):
+        <span class="kw">return</span> Vecteur(self.x+other.x, self.y+other.y)
+    <span class="kw">def</span> <span class="fn">__len__</span>(self): <span class="kw">return</span> 2
+    <span class="kw">def</span> <span class="fn">__eq__</span>(self, other):
+        <span class="kw">return</span> self.x==other.x <span class="kw">and</span> self.y==other.y
+    <span class="kw">def</span> <span class="fn">__getitem__</span>(self, i):
+        <span class="kw">return</span> (self.x, self.y)[i]
+    <span class="kw">def</span> <span class="fn">__iter__</span>(self):
+        <span class="kw">yield</span> self.x; <span class="kw">yield</span> self.y</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">property, staticmethod, classmethod</div>
+          <pre><code><span class="kw">class</span> <span class="cl">Cercle</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, rayon):
+        self._rayon = rayon
+
+    <span class="dc">@property</span>
+    <span class="kw">def</span> <span class="fn">rayon</span>(self): <span class="kw">return</span> self._rayon
+
+    <span class="dc">@rayon.setter</span>
+    <span class="kw">def</span> <span class="fn">rayon</span>(self, v):
+        <span class="kw">if</span> v &lt; 0: <span class="kw">raise</span> <span class="cl">ValueError</span>
+        self._rayon = v
+
+    <span class="dc">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">aire_depuis_d</span>(d): <span class="kw">return</span> 3.14*(d/2)**2
+
+    <span class="dc">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">depuis_diametre</span>(cls, d):
+        <span class="kw">return</span> cls(d / 2)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Classes abstraites &amp; dataclass</div>
+          <pre><code><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cl">Forme</span>(ABC):
+    <span class="dc">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">aire</span>(self): ...
+
+<span class="kw">class</span> <span class="cl">Carré</span>(Forme):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, c): self.c = c
+    <span class="kw">def</span> <span class="fn">aire</span>(self): <span class="kw">return</span> self.c**2
+
+<span class="cm"># dataclass (Python 3.7+)</span>
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass, field
+
+<span class="dc">@dataclass</span>
+<span class="kw">class</span> <span class="cl">Produit</span>:
+    nom: <span class="fn">str</span>
+    prix: <span class="fn">float</span>
+    stock: <span class="fn">int</span> = 0
+    tags: <span class="fn">list</span> = field(default_factory=<span class="fn">list</span>)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         EXCEPTIONS
+    ════════════════════════════════════════ -->
+    <section class="section" id="exceptions" data-keywords="exception erreur try except finally raise ValueError TypeError KeyError IndexError custom exception personnalisée">
+      <div class="section-header">
+        <span class="section-emoji">🚨</span>
+        <h2>Gestion des exceptions</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">try / except / else / finally</div>
+          <pre><code><span class="kw">try</span>:
+    résultat = 10 / x
+<span class="kw">except</span> <span class="cl">ZeroDivisionError</span>:
+    <span class="fn">print</span>(<span class="st">"Division par zéro"</span>)
+<span class="kw">except</span> (<span class="cl">TypeError</span>, <span class="cl">ValueError</span>) <span class="kw">as</span> e:
+    <span class="fn">print</span>(<span class="st">f"Erreur : {e}"</span>)
+<span class="kw">except</span> <span class="cl">Exception</span> <span class="kw">as</span> e:
+    <span class="fn">print</span>(<span class="st">f"Inattendu : {e}"</span>)
+    <span class="kw">raise</span>  <span class="cm"># re-lancer</span>
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Succès"</span>)  <span class="cm"># si pas d'exception</span>
+<span class="kw">finally</span>:
+    <span class="fn">print</span>(<span class="st">"Toujours exécuté"</span>)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Exceptions intégrées &amp; personnalisées</div>
+          <pre><code><span class="cm"># Lever une exception</span>
+<span class="kw">raise</span> <span class="cl">ValueError</span>(<span class="st">"Valeur invalide"</span>)
+<span class="kw">raise</span> <span class="cl">TypeError</span>(<span class="st">"Type incorrect"</span>)
+
+<span class="cm"># Exception personnalisée</span>
+<span class="kw">class</span> <span class="cl">MonErreur</span>(<span class="cl">Exception</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, msg, code=0):
+        <span class="fn">super</span>().__init__(msg)
+        self.code = code
+
+<span class="kw">raise</span> MonErreur(<span class="st">"Problème"</span>, code=<span class="nb">404</span>)
+
+<span class="cm"># Chaînage d'exceptions</span>
+<span class="kw">except</span> <span class="cl">IOError</span> <span class="kw">as</span> e:
+    <span class="kw">raise</span> MonErreur(<span class="st">"Lecture"</span>) <span class="kw">from</span> e</code></pre>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="card-title">Exceptions intégrées courantes</div>
+        <table class="ref-table">
+          <tr><th>Exception</th><th>Déclenchée quand</th></tr>
+          <tr><td><code>ValueError</code></td><td>Valeur incorrecte (<code>int("abc")</code>)</td></tr>
+          <tr><td><code>TypeError</code></td><td>Mauvais type (<code>"a" + 1</code>)</td></tr>
+          <tr><td><code>KeyError</code></td><td>Clé absente dans dict</td></tr>
+          <tr><td><code>IndexError</code></td><td>Index hors limites</td></tr>
+          <tr><td><code>AttributeError</code></td><td>Attribut inexistant</td></tr>
+          <tr><td><code>FileNotFoundError</code></td><td>Fichier introuvable</td></tr>
+          <tr><td><code>ZeroDivisionError</code></td><td>Division par 0</td></tr>
+          <tr><td><code>StopIteration</code></td><td>Fin d'itérateur</td></tr>
+          <tr><td><code>RecursionError</code></td><td>Profondeur de récursion dépassée</td></tr>
+          <tr><td><code>MemoryError</code></td><td>Plus de mémoire disponible</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         FICHIERS
+    ════════════════════════════════════════ -->
+    <section class="section" id="fichiers" data-keywords="fichier open read write readline readlines close with mode chemin path lecture écriture">
+      <div class="section-header">
+        <span class="section-emoji">📁</span>
+        <h2>Fichiers &amp; I/O</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Lecture &amp; écriture</div>
+          <pre><code><span class="cm"># Lecture complète</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"fichier.txt"</span>, <span class="st">"r"</span>, encoding=<span class="st">"utf-8"</span>) <span class="kw">as</span> f:
+    contenu = f.read()        <span class="cm"># tout le fichier</span>
+    lignes = f.readlines()    <span class="cm"># liste de lignes</span>
+
+<span class="cm"># Lecture ligne par ligne (mémoire efficace)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"fichier.txt"</span>) <span class="kw">as</span> f:
+    <span class="kw">for</span> ligne <span class="kw">in</span> f:
+        <span class="fn">print</span>(ligne.strip())
+
+<span class="cm"># Écriture</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"sortie.txt"</span>, <span class="st">"w"</span>) <span class="kw">as</span> f:
+    f.write(<span class="st">"Bonjour\n"</span>)
+    f.writelines([<span class="st">"a\n"</span>, <span class="st">"b\n"</span>])
+
+<span class="cm"># Ajout</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"log.txt"</span>, <span class="st">"a"</span>) <span class="kw">as</span> f:
+    f.write(<span class="st">"nouvelle ligne\n"</span>)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Modes d'ouverture &amp; pathlib</div>
+          <pre><code><span class="cm"># Modes : r rw w a x b t</span>
+<span class="cm"># r  = lecture (défaut)</span>
+<span class="cm"># w  = écriture (écrase)</span>
+<span class="cm"># a  = ajout</span>
+<span class="cm"># x  = création (erreur si existe)</span>
+<span class="cm"># b  = binaire  (rb, wb)</span>
+<span class="cm"># +  = lecture+écriture (r+, w+)</span>
+
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+p = Path(<span class="st">"dossier/fichier.txt"</span>)
+p.exists()
+p.read_text(encoding=<span class="st">"utf-8"</span>)
+p.write_text(<span class="st">"contenu"</span>)
+p.stem     <span class="cm"># "fichier"</span>
+p.suffix   <span class="cm"># ".txt"</span>
+p.parent   <span class="cm"># Path("dossier")</span>
+<span class="fn">list</span>(p.parent.glob(<span class="st">"*.txt"</span>))</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         MODULES
+    ════════════════════════════════════════ -->
+    <section class="section" id="modules" data-keywords="module import from package __init__ pip install virtual env venv namespace">
+      <div class="section-header">
+        <span class="section-emoji">📦</span>
+        <h2>Modules &amp; Packages</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Imports</div>
+          <pre><code><span class="kw">import</span> math
+<span class="kw">import</span> math <span class="kw">as</span> m
+
+<span class="kw">from</span> math <span class="kw">import</span> sqrt, pi
+<span class="kw">from</span> math <span class="kw">import</span> *        <span class="cm"># déconseillé</span>
+
+<span class="cm"># Import conditionnel</span>
+<span class="kw">try</span>:
+    <span class="kw">import</span> ujson <span class="kw">as</span> json
+<span class="kw">except</span> <span class="cl">ImportError</span>:
+    <span class="kw">import</span> json
+
+<span class="cm"># Import dynamique</span>
+<span class="kw">import</span> importlib
+mod = importlib.import_module(<span class="st">"math"</span>)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Structure de package &amp; __main__</div>
+          <pre><code><span class="cm"># Structure</span>
+<span class="cm"># mon_package/</span>
+<span class="cm">#   __init__.py</span>
+<span class="cm">#   module_a.py</span>
+<span class="cm">#   module_b.py</span>
+
+<span class="cm"># Exécution directe vs import</span>
+<span class="kw">if</span> __name__ == <span class="st">"__main__"</span>:
+    main()
+
+<span class="cm"># pip</span>
+<span class="cm"># pip install requests</span>
+<span class="cm"># pip install -r requirements.txt</span>
+<span class="cm"># pip freeze > requirements.txt</span>
+
+<span class="cm"># venv</span>
+<span class="cm"># python -m venv .venv</span>
+<span class="cm"># source .venv/bin/activate</span>
+<span class="cm"># .venv\Scripts\activate  (Windows)</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         PROG FONCTIONNELLE
+    ════════════════════════════════════════ -->
+    <section class="section" id="fonctionnel" data-keywords="map filter reduce lambda functools partial closure higher order function">
+      <div class="section-header">
+        <span class="section-emoji">λ</span>
+        <h2>Programmation fonctionnelle</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">map, filter, reduce</div>
+          <pre><code><span class="cm"># map — applique une fonction</span>
+doubles = <span class="fn">list</span>(<span class="fn">map</span>(<span class="kw">lambda</span> x: x*2, [1,2,3]))
+
+<span class="cm"># filter — filtre selon condition</span>
+pairs = <span class="fn">list</span>(<span class="fn">filter</span>(<span class="kw">lambda</span> x: x%2==0, <span class="fn">range</span>(10)))
+
+<span class="cm"># reduce — accumulation</span>
+<span class="kw">from</span> functools <span class="kw">import</span> reduce
+produit = reduce(<span class="kw">lambda</span> a,b: a*b, [1,2,3,4])
+
+<span class="cm"># Équivalents en compréhension (préférés)</span>
+doubles = [x*2 <span class="kw">for</span> x <span class="kw">in</span> [1,2,3]]
+pairs   = [x <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(10) <span class="kw">if</span> x%2==0]</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">functools</div>
+          <pre><code><span class="kw">from</span> functools <span class="kw">import</span> partial, lru_cache, wraps
+
+<span class="cm"># partial — fixer des arguments</span>
+double = partial(<span class="fn">pow</span>, exp=2)
+double(base=3)  <span class="cm"># 9</span>
+
+<span class="cm"># lru_cache — mémoïsation</span>
+<span class="dc">@lru_cache</span>(maxsize=<span class="kw">None</span>)
+<span class="kw">def</span> <span class="fn">fib</span>(n):
+    <span class="kw">if</span> n &lt; 2: <span class="kw">return</span> n
+    <span class="kw">return</span> fib(n-1) + fib(n-2)
+
+<span class="cm"># Closure</span>
+<span class="kw">def</span> <span class="fn">compteur</span>():
+    n = 0
+    <span class="kw">def</span> <span class="fn">incr</span>():
+        <span class="kw">nonlocal</span> n
+        n += 1
+        <span class="kw">return</span> n
+    <span class="kw">return</span> incr</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         GÉNÉRATEURS
+    ════════════════════════════════════════ -->
+    <section class="section" id="generateurs" data-keywords="générateur generator yield yield from itérateur iterator send next StopIteration">
+      <div class="section-header">
+        <span class="section-emoji">🌀</span>
+        <h2>Générateurs &amp; Itérateurs</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Fonctions génératrices</div>
+          <pre><code><span class="kw">def</span> <span class="fn">compteur</span>(n):
+    i = 0
+    <span class="kw">while</span> i &lt; n:
+        <span class="kw">yield</span> i
+        i += 1
+
+<span class="kw">for</span> val <span class="kw">in</span> compteur(<span class="nb">5</span>):
+    <span class="fn">print</span>(val)   <span class="cm"># 0 1 2 3 4</span>
+
+<span class="cm"># yield from — délégation</span>
+<span class="kw">def</span> <span class="fn">aplatir</span>(lst):
+    <span class="kw">for</span> item <span class="kw">in</span> lst:
+        <span class="kw">if</span> <span class="fn">isinstance</span>(item, <span class="fn">list</span>):
+            <span class="kw">yield from</span> aplatir(item)
+        <span class="kw">else</span>:
+            <span class="kw">yield</span> item
+
+<span class="cm"># next() et send()</span>
+g = compteur(<span class="nb">3</span>)
+<span class="fn">next</span>(g)          <span class="cm"># 0</span>
+<span class="fn">next</span>(g)          <span class="cm"># 1</span>
+<span class="fn">next</span>(g, <span class="st">"fin"</span>)   <span class="cm"># 2 (valeur par défaut)</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Protocole itérateur</div>
+          <pre><code><span class="kw">class</span> <span class="cl">Compte</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, max):
+        self.max = max
+        self.n = 0
+
+    <span class="kw">def</span> <span class="fn">__iter__</span>(self):
+        <span class="kw">return</span> self
+
+    <span class="kw">def</span> <span class="fn">__next__</span>(self):
+        <span class="kw">if</span> self.n &gt;= self.max:
+            <span class="kw">raise</span> <span class="cl">StopIteration</span>
+        val = self.n
+        self.n += 1
+        <span class="kw">return</span> val
+
+<span class="kw">for</span> x <span class="kw">in</span> Compte(<span class="nb">3</span>):
+    <span class="fn">print</span>(x)  <span class="cm"># 0 1 2</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         DÉCORATEURS
+    ════════════════════════════════════════ -->
+    <section class="section" id="decorateurs" data-keywords="décorateur decorator @wraps functools stacking empilage paramétré">
+      <div class="section-header">
+        <span class="section-emoji">🎨</span>
+        <h2>Décorateurs</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Décorateur simple</div>
+          <pre><code><span class="kw">from</span> functools <span class="kw">import</span> wraps
+<span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">chronomètre</span>(func):
+    <span class="dc">@wraps</span>(func)  <span class="cm"># préserve métadonnées</span>
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        début = time.time()
+        résultat = func(*args, **kwargs)
+        durée = time.time() - début
+        <span class="fn">print</span>(<span class="st">f"{func.__name__} : {durée:.3f}s"</span>)
+        <span class="kw">return</span> résultat
+    <span class="kw">return</span> wrapper
+
+<span class="dc">@chronomètre</span>
+<span class="kw">def</span> <span class="fn">calcul</span>():
+    <span class="kw">return</span> <span class="fn">sum</span>(<span class="fn">range</span>(<span class="nb">1_000_000</span>))</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Décorateur avec paramètres</div>
+          <pre><code><span class="kw">def</span> <span class="fn">répéter</span>(n):
+    <span class="kw">def</span> <span class="fn">décorateur</span>(func):
+        <span class="dc">@wraps</span>(func)
+        <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+            <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(n):
+                résultat = func(*args, **kwargs)
+            <span class="kw">return</span> résultat
+        <span class="kw">return</span> wrapper
+    <span class="kw">return</span> décorateur
+
+<span class="dc">@répéter</span>(<span class="nb">3</span>)
+<span class="kw">def</span> <span class="fn">coucou</span>(): <span class="fn">print</span>(<span class="st">"Bonjour!"</span>)
+
+<span class="cm"># Empilage de décorateurs</span>
+<span class="dc">@décorateur_a</span>
+<span class="dc">@décorateur_b</span>
+<span class="kw">def</span> <span class="fn">ma_func</span>(): <span class="kw">pass</span>
+<span class="cm"># équivaut à: ma_func = dé_a(dé_b(ma_func))</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CONTEXT MANAGERS
+    ════════════════════════════════════════ -->
+    <section class="section" id="context" data-keywords="context manager with __enter__ __exit__ contextmanager contextlib">
+      <div class="section-header">
+        <span class="section-emoji">📌</span>
+        <h2>Context Managers</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">with &amp; contextmanager</div>
+          <pre><code><span class="cm"># Utilisation classique</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"f.txt"</span>) <span class="kw">as</span> f:
+    data = f.read()   <span class="cm"># fermé automatiquement</span>
+
+<span class="cm"># Multiple</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"in.txt"</span>) <span class="kw">as</span> src, <span class="fn">open</span>(<span class="st">"out.txt"</span>,<span class="st">"w"</span>) <span class="kw">as</span> dst:
+    dst.write(src.read())
+
+<span class="cm"># Via decorator</span>
+<span class="kw">from</span> contextlib <span class="kw">import</span> contextmanager
+
+<span class="dc">@contextmanager</span>
+<span class="kw">def</span> <span class="fn">chrono</span>(label):
+    <span class="kw">import</span> time
+    début = time.time()
+    <span class="kw">yield</span>
+    <span class="fn">print</span>(<span class="st">f"{label}: {time.time()-début:.3f}s"</span>)
+
+<span class="kw">with</span> chrono(<span class="st">"calcul"</span>):
+    <span class="fn">sum</span>(<span class="fn">range</span>(<span class="nb">10**7</span>))</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Protocole __enter__ / __exit__</div>
+          <pre><code><span class="kw">class</span> <span class="cl">GestionDB</span>:
+    <span class="kw">def</span> <span class="fn">__enter__</span>(self):
+        self.conn = connecter()
+        <span class="kw">return</span> self.conn
+
+    <span class="kw">def</span> <span class="fn">__exit__</span>(self, exc_type, exc_val, tb):
+        <span class="kw">if</span> exc_type:
+            self.conn.rollback()
+        <span class="kw">else</span>:
+            self.conn.commit()
+        self.conn.close()
+        <span class="kw">return</span> <span class="kw">False</span>  <span class="cm"># ne supprime pas l'exception</span>
+
+<span class="kw">with</span> GestionDB() <span class="kw">as</span> db:
+    db.execute(<span class="st">"INSERT ..."</span>)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         ASYNC / AWAIT
+    ════════════════════════════════════════ -->
+    <section class="section" id="async" data-keywords="async await asyncio coroutine gather task event loop aiohttp">
+      <div class="section-header">
+        <span class="section-emoji">⚡</span>
+        <h2>Async / Await</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Bases asyncio</div>
+          <pre><code><span class="kw">import</span> asyncio
+
+<span class="kw">async def</span> <span class="fn">récupérer</span>(url):
+    <span class="kw">await</span> asyncio.sleep(<span class="nb">1</span>)   <span class="cm"># non-bloquant</span>
+    <span class="kw">return</span> <span class="st">f"données de {url}"</span>
+
+<span class="kw">async def</span> <span class="fn">main</span>():
+    <span class="cm"># Séquentiel</span>
+    res1 = <span class="kw">await</span> récupérer(<span class="st">"url1"</span>)
+    res2 = <span class="kw">await</span> récupérer(<span class="st">"url2"</span>)
+
+    <span class="cm"># Concurrent (plus rapide)</span>
+    res1, res2 = <span class="kw">await</span> asyncio.gather(
+        récupérer(<span class="st">"url1"</span>),
+        récupérer(<span class="st">"url2"</span>)
+    )
+
+asyncio.run(main())</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Tasks, timeout, queues</div>
+          <pre><code><span class="kw">async def</span> <span class="fn">main</span>():
+    <span class="cm"># Créer des tâches</span>
+    t1 = asyncio.create_task(job(<span class="nb">1</span>))
+    t2 = asyncio.create_task(job(<span class="nb">2</span>))
+    <span class="kw">await</span> t1
+    <span class="kw">await</span> t2
+
+    <span class="cm"># Timeout</span>
+    <span class="kw">try</span>:
+        <span class="kw">await</span> asyncio.wait_for(job(), timeout=5.0)
+    <span class="kw">except</span> asyncio.TimeoutError:
+        <span class="fn">print</span>(<span class="st">"Trop long"</span>)
+
+<span class="cm"># Générateur async</span>
+<span class="kw">async def</span> <span class="fn">stream</span>():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nb">5</span>):
+        <span class="kw">await</span> asyncio.sleep(0.1)
+        <span class="kw">yield</span> i
+
+<span class="kw">async for</span> val <span class="kw">in</span> stream():
+    <span class="fn">print</span>(val)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         MÉTACLASSES
+    ════════════════════════════════════════ -->
+    <section class="section" id="metaclasses" data-keywords="métaclasse metaclass type __new__ __init_subclass__ ABCMeta Protocol">
+      <div class="section-header">
+        <span class="section-emoji">🔮</span>
+        <h2>Métaclasses</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">type &amp; métaclasses custom</div>
+          <pre><code><span class="cm"># type est la métaclasse de toutes les classes</span>
+<span class="fn">type</span>(int)    <span class="cm"># &lt;class 'type'&gt;</span>
+<span class="fn">type</span>(object) <span class="cm"># &lt;class 'type'&gt;</span>
+
+<span class="cm"># Créer une classe dynamiquement</span>
+MonInt = <span class="fn">type</span>(<span class="st">"MonInt"</span>, (<span class="fn">int</span>,), {<span class="st">"double"</span>: <span class="kw">lambda</span> s: s*2})
+
+<span class="cm"># Métaclasse personnalisée</span>
+<span class="kw">class</span> <span class="cl">Singleton</span>(<span class="fn">type</span>):
+    _instances = {}
+    <span class="kw">def</span> <span class="fn">__call__</span>(cls, *a, **kw):
+        <span class="kw">if</span> cls <span class="kw">not in</span> cls._instances:
+            cls._instances[cls] = <span class="fn">super</span>()().__call__(*a, **kw)
+        <span class="kw">return</span> cls._instances[cls]
+
+<span class="kw">class</span> <span class="cl">Config</span>(metaclass=Singleton): <span class="kw">pass</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">__init_subclass__ &amp; Protocol</div>
+          <pre><code><span class="cm"># __init_subclass__ — hook héritage</span>
+<span class="kw">class</span> <span class="cl">Plugin</span>:
+    _registry = []
+    <span class="kw">def</span> <span class="fn">__init_subclass__</span>(cls, **kw):
+        <span class="fn">super</span>().__init_subclass__(**kw)
+        Plugin._registry.append(cls)
+
+<span class="kw">class</span> <span class="cl">MonPlugin</span>(Plugin): <span class="kw">pass</span>
+
+<span class="cm"># Protocol (duck typing structurel)</span>
+<span class="kw">from</span> typing <span class="kw">import</span> Protocol
+
+<span class="kw">class</span> <span class="cl">Dessinable</span>(Protocol):
+    <span class="kw">def</span> <span class="fn">dessiner</span>(self) -&gt; <span class="kw">None</span>: ...
+
+<span class="kw">def</span> <span class="fn">afficher</span>(obj: Dessinable) -&gt; <span class="kw">None</span>:
+    obj.dessiner()</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         TYPAGE STATIQUE
+    ════════════════════════════════════════ -->
+    <section class="section" id="typing" data-keywords="typing type hint annotation Optional Union List Dict Tuple TypeVar Generic Literal overload">
+      <div class="section-header">
+        <span class="section-emoji">🏷️</span>
+        <h2>Typage statique (type hints)</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Annotations courantes</div>
+          <pre><code><span class="kw">from</span> typing <span class="kw">import</span> Optional, Union, Any
+<span class="kw">from</span> typing <span class="kw">import</span> List, Dict, Tuple, Set
+
+<span class="cm"># Python 3.9+ : types natifs</span>
+<span class="kw">def</span> <span class="fn">f</span>(x: <span class="fn">list</span>[<span class="fn">int</span>]) -&gt; <span class="fn">dict</span>[<span class="fn">str</span>, <span class="fn">int</span>]: ...
+
+<span class="cm"># Optional = X | None</span>
+<span class="kw">def</span> <span class="fn">trouver</span>(n: <span class="fn">str</span>) -&gt; Optional[<span class="fn">int</span>]: ...
+
+<span class="cm"># Union</span>
+<span class="kw">def</span> <span class="fn">traiter</span>(x: Union[<span class="fn">int</span>, <span class="fn">str</span>]) -&gt; <span class="kw">None</span>: ...
+<span class="kw">def</span> <span class="fn">traiter</span>(x: <span class="fn">int</span> | <span class="fn">str</span>) -&gt; <span class="kw">None</span>: <span class="kw">...</span>  <span class="cm"># 3.10+</span>
+
+<span class="cm"># TypeVar — générique</span>
+<span class="kw">from</span> typing <span class="kw">import</span> TypeVar
+T = TypeVar(<span class="st">'T'</span>)
+<span class="kw">def</span> <span class="fn">premier</span>(lst: <span class="fn">list</span>[T]) -&gt; T:
+    <span class="kw">return</span> lst[<span class="nb">0</span>]</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Literal, Final, TypedDict</div>
+          <pre><code><span class="kw">from</span> typing <span class="kw">import</span> Literal, Final, TypedDict
+
+<span class="cm"># Literal — valeurs précises</span>
+Mode = Literal[<span class="st">"r"</span>, <span class="st">"w"</span>, <span class="st">"a"</span>]
+<span class="kw">def</span> <span class="fn">ouvrir</span>(mode: Mode): ...
+
+<span class="cm"># Final — constante</span>
+MAX: Final = <span class="nb">100</span>
+
+<span class="cm"># TypedDict</span>
+<span class="kw">class</span> <span class="cl">User</span>(TypedDict):
+    nom: <span class="fn">str</span>
+    age: <span class="fn">int</span>
+
+<span class="cm"># Callable</span>
+<span class="kw">from</span> typing <span class="kw">import</span> Callable
+<span class="kw">def</span> <span class="fn">appliquer</span>(f: Callable[[<span class="fn">int</span>], <span class="fn">str</span>],
+               v: <span class="fn">int</span>) -&gt; <span class="fn">str</span>:
+    <span class="kw">return</span> f(v)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         OS / SYS / PATHLIB
+    ════════════════════════════════════════ -->
+    <section class="section" id="stdlib" data-keywords="os sys pathlib path environ listdir makedirs getcwd argv path exists rename remove">
+      <div class="section-header">
+        <span class="section-emoji">🗂️</span>
+        <h2>os / sys / pathlib</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">os</div>
+          <pre><code><span class="kw">import</span> os
+
+os.getcwd()               <span class="cm"># répertoire courant</span>
+os.chdir(<span class="st">"/tmp"</span>)          <span class="cm"># changer répertoire</span>
+os.listdir(<span class="st">"."</span>)           <span class="cm"># contenu du dossier</span>
+os.makedirs(<span class="st">"a/b/c"</span>, exist_ok=<span class="kw">True</span>)
+os.remove(<span class="st">"f.txt"</span>)
+os.rename(<span class="st">"ancien"</span>, <span class="st">"nouveau"</span>)
+os.path.join(<span class="st">"dossier"</span>, <span class="st">"f.txt"</span>)
+os.path.exists(<span class="st">"chemin"</span>)
+os.path.basename(<span class="st">"/a/b/c.txt"</span>)  <span class="cm"># "c.txt"</span>
+os.path.dirname(<span class="st">"/a/b/c.txt"</span>)   <span class="cm"># "/a/b"</span>
+os.environ.get(<span class="st">"HOME"</span>)          <span class="cm"># variable env</span>
+os.cpu_count()</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">sys &amp; pathlib</div>
+          <pre><code><span class="kw">import</span> sys
+
+sys.argv          <span class="cm"># arguments ligne de commande</span>
+sys.exit(0)       <span class="cm"># quitter</span>
+sys.path          <span class="cm"># chemins de recherche modules</span>
+sys.version       <span class="cm"># version Python</span>
+sys.platform      <span class="cm"># "linux", "win32", "darwin"</span>
+sys.stdin / sys.stdout / sys.stderr
+
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+p = Path(<span class="st">"docs"</span>) / <span class="st">"readme.md"</span>
+p.exists()
+p.is_file()
+p.is_dir()
+p.mkdir(parents=<span class="kw">True</span>, exist_ok=<span class="kw">True</span>)
+p.unlink()        <span class="cm"># supprimer fichier</span>
+<span class="kw">for</span> f <span class="kw">in</span> Path(<span class="st">"."</span>).rglob(<span class="st">"*.py"</span>):
+    <span class="fn">print</span>(f)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         JSON / RE
+    ════════════════════════════════════════ -->
+    <section class="section" id="json-re" data-keywords="json dumps loads dump load regex re match search findall sub compile pattern groupe">
+      <div class="section-header">
+        <span class="section-emoji">📄</span>
+        <h2>json &amp; re (expressions régulières)</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">json</div>
+          <pre><code><span class="kw">import</span> json
+
+<span class="cm"># Sérialisation (Python → JSON)</span>
+texte = json.dumps({<span class="st">"nom"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: 30})
+texte = json.dumps(data, indent=2, ensure_ascii=<span class="kw">False</span>)
+
+<span class="cm"># Désérialisation (JSON → Python)</span>
+data = json.loads(<span class="st">'{"a": 1}'</span>)
+
+<span class="cm"># Vers/depuis fichier</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"data.json"</span>, <span class="st">"w"</span>) <span class="kw">as</span> f:
+    json.dump(data, f, indent=2)
+
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"data.json"</span>) <span class="kw">as</span> f:
+    data = json.load(f)</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">re — expressions régulières</div>
+          <pre><code><span class="kw">import</span> re
+
+<span class="cm"># Chercher une correspondance</span>
+m = re.search(<span class="st">r"\d+"</span>, <span class="st">"abc123def"</span>)
+m.group()   <span class="cm"># "123"</span>
+
+<span class="cm"># Toutes les correspondances</span>
+re.findall(<span class="st">r"\d+"</span>, <span class="st">"a1 b22 c3"</span>)  <span class="cm"># ['1','22','3']</span>
+
+<span class="cm"># Remplacer</span>
+re.sub(<span class="st">r"\s+"</span>, <span class="st">"-"</span>, <span class="st">"a b  c"</span>)   <span class="cm"># "a-b-c"</span>
+
+<span class="cm"># Groupes</span>
+m = re.match(<span class="st">r"(\w+)@(\w+)"</span>, <span class="st">"user@host"</span>)
+m.group(1)   <span class="cm"># "user"</span>
+m.group(2)   <span class="cm"># "host"</span>
+
+<span class="cm"># Compiler (réutilisation)</span>
+pat = re.compile(<span class="st">r"^\d{4}-\d{2}-\d{2}$"</span>)
+pat.match(<span class="st">"2024-01-15"</span>)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         DATETIME
+    ════════════════════════════════════════ -->
+    <section class="section" id="datetime" data-keywords="datetime date time timedelta strftime strptime now today timestamp">
+      <div class="section-header">
+        <span class="section-emoji">📅</span>
+        <h2>datetime</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Date &amp; heure</div>
+          <pre><code><span class="kw">from</span> datetime <span class="kw">import</span> datetime, date, timedelta
+
+maintenant = datetime.now()
+aujourd_hui = date.today()
+
+dt = datetime(<span class="nb">2024</span>, 1, 15, 9, 30, 0)
+dt.year    <span class="cm"># 2024</span>
+dt.month   <span class="cm"># 1</span>
+dt.day     <span class="cm"># 15</span>
+
+<span class="cm"># Formatage</span>
+dt.strftime(<span class="st">"%d/%m/%Y %H:%M"</span>)
+<span class="cm"># Parsing</span>
+datetime.strptime(<span class="st">"15/01/2024"</span>, <span class="st">"%d/%m/%Y"</span>)
+
+<span class="cm"># Arithmétique</span>
+demain = aujourd_hui + timedelta(days=1)
+delta = dt2 - dt1   <span class="cm"># timedelta</span>
+delta.days
+delta.total_seconds()</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         COLLECTIONS
+    ════════════════════════════════════════ -->
+    <section class="section" id="collections" data-keywords="collections Counter defaultdict OrderedDict deque namedtuple ChainMap">
+      <div class="section-header">
+        <span class="section-emoji">🗃️</span>
+        <h2>collections</h2>
+        <span class="section-badge badge-intermediate">Intermédiaire</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Counter &amp; defaultdict</div>
+          <pre><code><span class="kw">from</span> collections <span class="kw">import</span> Counter, defaultdict
+
+<span class="cm"># Counter — comptage</span>
+c = Counter(<span class="st">"abracadabra"</span>)
+c.most_common(<span class="nb">3</span>)   <span class="cm"># [('a',5),('b',2),('r',2)]</span>
+c + Counter(<span class="st">"zoo"</span>)  <span class="cm"># additionner</span>
+
+<span class="cm"># defaultdict — valeur par défaut</span>
+dd = defaultdict(<span class="fn">list</span>)
+dd[<span class="st">"fruits"</span>].append(<span class="st">"pomme"</span>)  <span class="cm"># pas de KeyError</span>
+
+dd2 = defaultdict(<span class="fn">int</span>)
+dd2[<span class="st">"compteur"</span>] += 1</code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">deque &amp; OrderedDict</div>
+          <pre><code><span class="kw">from</span> collections <span class="kw">import</span> deque, OrderedDict
+
+<span class="cm"># deque — file double bout</span>
+d = deque([1, 2, 3], maxlen=5)
+d.append(4)      <span class="cm"># à droite</span>
+d.appendleft(0)  <span class="cm"># à gauche</span>
+d.pop()          <span class="cm"># retire droite</span>
+d.popleft()      <span class="cm"># retire gauche</span>
+d.rotate(2)      <span class="cm"># rotation</span>
+
+<span class="cm"># OrderedDict (utile avant Python 3.7)</span>
+od = OrderedDict()
+od.move_to_end(<span class="st">"clé"</span>)
+od.move_to_end(<span class="st">"clé"</span>, last=<span class="kw">False</span>)  <span class="cm"># en tête</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         ITERTOOLS
+    ════════════════════════════════════════ -->
+    <section class="section" id="itertools" data-keywords="itertools chain product combinations permutations cycle repeat islice groupby accumulate starmap">
+      <div class="section-header">
+        <span class="section-emoji">🔗</span>
+        <h2>itertools</h2>
+        <span class="section-badge badge-advanced">Avancé</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Combinatoire</div>
+          <pre><code><span class="kw">from</span> itertools <span class="kw">import</span> *
+
+<span class="fn">list</span>(product(<span class="st">"AB"</span>, <span class="fn">range</span>(<span class="nb">2</span>)))
+<span class="cm"># [('A',0),('A',1),('B',0),('B',1)]</span>
+
+<span class="fn">list</span>(permutations(<span class="st">"ABC"</span>, 2))
+<span class="cm"># toutes les paires ordonnées</span>
+
+<span class="fn">list</span>(combinations(<span class="st">"ABCD"</span>, 2))
+<span class="cm"># [('A','B'),('A','C')...]</span>
+
+<span class="fn">list</span>(combinations_with_replacement(<span class="st">"AB"</span>, 2))
+<span class="cm"># [('A','A'),('A','B'),('B','B')]</span></code></pre>
+        </div>
+        <div class="card">
+          <div class="card-title">Chaînage &amp; découpage</div>
+          <pre><code><span class="cm"># chain — concaténer itérables</span>
+<span class="fn">list</span>(chain([1,2], [3,4], [5]))
+<span class="cm"># [1, 2, 3, 4, 5]</span>
+
+<span class="cm"># islice — trancher un itérable</span>
+<span class="fn">list</span>(islice(count(), <span class="nb">5</span>))  <span class="cm"># [0,1,2,3,4]</span>
+
+<span class="cm"># cycle — répéter en boucle</span>
+c = cycle([<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>])
+
+<span class="cm"># groupby — grouper consécutif</span>
+data = sorted(data, key=<span class="kw">lambda</span> x: x[<span class="st">"cat"</span>])
+<span class="kw">for</span> cat, items <span class="kw">in</span> groupby(data, key=<span class="kw">lambda</span> x: x[<span class="st">"cat"</span>]):
+    <span class="fn">print</span>(cat, <span class="fn">list</span>(items))
+
+<span class="cm"># accumulate — cumul</span>
+<span class="fn">list</span>(accumulate([1,2,3,4]))  <span class="cm"># [1,3,6,10]</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         FONCTIONS INTÉGRÉES
+    ════════════════════════════════════════ -->
+    <section class="section" id="builtins" data-keywords="builtin intégré len range print input type isinstance map filter sorted enumerate zip sum min max abs round open chr ord hex bin oct">
+      <div class="section-header">
+        <span class="section-emoji">⚙️</span>
+        <h2>Fonctions intégrées (builtins)</h2>
+        <span class="section-badge badge-beginner">Débutant</span>
+      </div>
+      <div class="table-card">
+        <table class="ref-table">
+          <tr><th>Fonction</th><th>Description</th><th>Exemple</th></tr>
+          <tr><td><code>len(x)</code></td><td>Longueur d'un objet</td><td><code>len([1,2,3]) → 3</code></td></tr>
+          <tr><td><code>range(n)</code></td><td>Séquence d'entiers</td><td><code>range(0,10,2)</code></td></tr>
+          <tr><td><code>type(x)</code></td><td>Type d'un objet</td><td><code>type(42) → int</code></td></tr>
+          <tr><td><code>isinstance(x,T)</code></td><td>Vérification de type</td><td><code>isinstance(3, int)</code></td></tr>
+          <tr><td><code>print(*args)</code></td><td>Affichage</td><td><code>print("a", sep=",")</code></td></tr>
+          <tr><td><code>input(prompt)</code></td><td>Saisie utilisateur</td><td><code>input("Nom : ")</code></td></tr>
+          <tr><td><code>int/float/str/bool</code></td><td>Conversions</td><td><code>int("42")</code></td></tr>
+          <tr><td><code>abs(x)</code></td><td>Valeur absolue</td><td><code>abs(-5) → 5</code></td></tr>
+          <tr><td><code>round(x, n)</code></td><td>Arrondi</td><td><code>round(3.14159, 2)</code></td></tr>
+          <tr><td><code>min/max</code></td><td>Min / Max</td><td><code>max([1,5,3])</code></td></tr>
+          <tr><td><code>sum(it)</code></td><td>Somme</td><td><code>sum(range(10))</code></td></tr>
+          <tr><td><code>sorted(it)</code></td><td>Tri (nouvelle liste)</td><td><code>sorted(lst, reverse=True)</code></td></tr>
+          <tr><td><code>reversed(it)</code></td><td>Itérateur inversé</td><td><code>list(reversed(lst))</code></td></tr>
+          <tr><td><code>enumerate(it)</code></td><td>Index + valeur</td><td><code>enumerate(lst, start=1)</code></td></tr>
+          <tr><td><code>zip(*its)</code></td><td>Paires d'itérables</td><td><code>zip(a,b,c)</code></td></tr>
+          <tr><td><code>map(f, it)</code></td><td>Appliquer fonction</td><td><code>map(str, [1,2,3])</code></td></tr>
+          <tr><td><code>filter(f, it)</code></td><td>Filtrer</td><td><code>filter(None, lst)</code></td></tr>
+          <tr><td><code>any(it)</code></td><td>Au moins un vrai</td><td><code>any(x>0 for x in lst)</code></td></tr>
+          <tr><td><code>all(it)</code></td><td>Tous vrais</td><td><code>all(x>0 for x in lst)</code></td></tr>
+          <tr><td><code>chr(n)</code></td><td>Code → caractère</td><td><code>chr(65) → 'A'</code></td></tr>
+          <tr><td><code>ord(c)</code></td><td>Caractère → code</td><td><code>ord('A') → 65</code></td></tr>
+          <tr><td><code>hex/bin/oct</code></td><td>Bases numériques</td><td><code>hex(255) → '0xff'</code></td></tr>
+          <tr><td><code>id(x)</code></td><td>Identité mémoire</td><td><code>id(obj)</code></td></tr>
+          <tr><td><code>hash(x)</code></td><td>Valeur de hachage</td><td><code>hash("clé")</code></td></tr>
+          <tr><td><code>dir(x)</code></td><td>Attributs d'un objet</td><td><code>dir([])</code></td></tr>
+          <tr><td><code>help(x)</code></td><td>Documentation</td><td><code>help(str)</code></td></tr>
+          <tr><td><code>vars(x)</code></td><td>__dict__ de l'objet</td><td><code>vars(instance)</code></td></tr>
+          <tr><td><code>getattr/setattr</code></td><td>Attributs dynamiques</td><td><code>getattr(obj,'attr',None)</code></td></tr>
+          <tr><td><code>callable(x)</code></td><td>Est-ce appelable ?</td><td><code>callable(print) → True</code></td></tr>
+          <tr><td><code>open(f,mode)</code></td><td>Ouvrir un fichier</td><td><code>open("f.txt","r")</code></td></tr>
+          <tr><td><code>eval/exec</code></td><td>Exécuter du code</td><td><code>eval("2+2")</code></td></tr>
+          <tr><td><code>__import__</code></td><td>Import dynamique</td><td><code>__import__("math")</code></td></tr>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<button id="back-to-top" title="Retour en haut">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

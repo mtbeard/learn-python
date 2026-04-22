@@ -1,0 +1,53 @@
+# ─── Système d'exploitation ───────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Éditeurs & IDEs ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*~
+
+# ─── Logs & temporaires ───────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# ─── Dépendances (si ajout futur de Node/npm) ─────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ─── Environnements Python (si scripts de build ajoutés) ──────────
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv
+venv/
+env/
+
+# ─── Distribution / build ─────────────────────────────────────────
+dist/
+build/
+*.min.js
+*.min.css
+
+# ─── Divers ───────────────────────────────────────────────────────
+.cache/
+.parcel-cache/
